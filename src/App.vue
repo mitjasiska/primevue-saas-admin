@@ -1,85 +1,38 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Select from 'primevue/select';
+import { useThemeConfig } from '@/composables/theme-config';
+import state from '@/state/state';
+import { onMounted, ref } from 'vue';
+
+onMounted(() => {
+  updateColors('primary', state.primaryColor);
+  updateColors('surface', state.surface);
+});
+
+const selectedColor = ref<string>(state.primaryColor);
+const { getPrimaryColorNames, getSurfaceNames, updateColors } = useThemeConfig();
+const colorOptions = getPrimaryColorNames();
+const onColorChange = () => updateColors('primary', selectedColor.value);
+
+const selectedSurface = ref<string>(state.surface);
+const surfaceOptions = getSurfaceNames();
+const onSurfaceChange = () => updateColors('surface', selectedColor.value);
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="flex items-center justify-center gap-10">
+    <Select
+      v-model="selectedColor"
+      :options="colorOptions"
+      placeholder="Select color"
+      @change="onColorChange"
+    />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <Select
+      v-model="selectedSurface"
+      :options="surfaceOptions"
+      placeholder="Select surface"
+      @change="onSurfaceChange"
+    />
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
