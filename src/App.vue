@@ -2,12 +2,7 @@
 import Select from 'primevue/select';
 import { useThemeConfig } from '@/composables/theme-config';
 import state from '@/state/state';
-import { onMounted, ref } from 'vue';
-
-onMounted(() => {
-  updateColors('primary', state.primaryColor);
-  updateColors('surface', state.surface);
-});
+import { ref } from 'vue';
 
 const selectedColor = ref<string>(state.primaryColor);
 const { getPrimaryColorNames, getSurfaceNames, updateColors } = useThemeConfig();
