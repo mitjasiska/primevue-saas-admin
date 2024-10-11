@@ -4,14 +4,14 @@ import AppLogo from '@/components/AppLogo.vue';
 
 <template>
   <div>
-    <header class="main-header fixed right-0 top-0 border-b border-black">
+    <header class="main-header fixed left-0 right-0 top-0 border-b border-black">
       <div class="flex justify-between">
         <div class="left">left</div>
         <div class="right">right</div>
       </div>
     </header>
-    <div class="main-sidebar fixed flex-col border-r border-black lg:flex">
-      <div>
+    <div class="main-sidebar fixed hidden flex-col border-r border-black lg:flex">
+      <div class="main-sidebar__logo flex items-center justify-between px-6">
         <AppLogo />
       </div>
       <div class="min-h-screen">side content</div>
@@ -27,16 +27,28 @@ import AppLogo from '@/components/AppLogo.vue';
 
 <style scoped>
 .main-header {
-  left: var(--sidebar-width);
   height: var(--header-height);
-}
-
-.main-sidebar {
-  width: var(--sidebar-width);
 }
 
 .main-wrapper {
   padding-top: var(--header-height);
-  padding-left: var(--sidebar-width);
+}
+
+.main-sidebar__logo {
+  height: var(--header-height);
+}
+
+@media (min-width: 1024px) {
+  .main-header {
+    left: var(--sidebar-width);
+  }
+
+  .main-sidebar {
+    width: var(--sidebar-width);
+  }
+
+  .main-wrapper {
+    padding-left: var(--sidebar-width);
+  }
 }
 </style>
