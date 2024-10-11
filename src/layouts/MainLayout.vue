@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import AppLogo from '@/components/AppLogo.vue';
+import Avatar from 'primevue/avatar';
+import AvatarImg from '@/assets/images/avatar_male.png';
 </script>
 
 <template>
   <div>
-    <header class="main-header fixed left-0 right-0 top-0 border-b border-black">
-      <div class="flex justify-between">
+    <header class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-7">
+      <div class="flex grow items-center justify-between">
         <div class="left">left</div>
-        <div class="right">right</div>
+        <div class="right">
+          <Avatar :image="AvatarImg" class="!h-10 !w-10" shape="circle" />
+        </div>
       </div>
     </header>
     <div class="main-sidebar fixed hidden flex-col border-r border-black lg:flex">
