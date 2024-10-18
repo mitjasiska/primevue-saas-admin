@@ -10,7 +10,7 @@ import AvatarImg from '@/assets/images/avatar_male.png';
       <div class="flex grow items-center justify-between">
         <div class="left">left</div>
         <div class="right">
-          <Avatar :image="AvatarImg" class="!h-10 !w-10" shape="circle" />
+          <Avatar :image="AvatarImg" class="!h-9 !w-9" shape="circle" />
         </div>
       </div>
     </header>
