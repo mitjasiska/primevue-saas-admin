@@ -4,7 +4,6 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import state from '@/state/state';
-import Aura from '@/primevue/presets/aura';
 import { useThemeConfig } from '@/composables/theme-config'; // set color theme
 
 // set color theme
@@ -17,8 +16,7 @@ const app = createApp(App);
 app.use(router);
 
 app.use(PrimeVue, {
-  unstyled: true,
-  pt: Aura
+  theme: 'none'
 });
 
 app.mount('#app');
