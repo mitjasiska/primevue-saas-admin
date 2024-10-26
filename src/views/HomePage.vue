@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import Select from 'primevue/select';
-import Button from 'primevue/button';
 import { useThemeConfig } from '@/composables/theme-config';
 import state from '@/state/app-state';
 import { ref } from 'vue';
 import appState from '@/state/app-state';
+import type { PrimaryColorNamesWithNoir, SurfaceColorNames } from '@/theme/colors';
 
-const selectedColor = ref<string>(state.primaryColor.name);
-const { getPrimaryColorNames, getSurfaceColorNames, applyThemeByColorName } = useThemeConfig();
+const selectedColor = ref<PrimaryColorNamesWithNoir>(state.primaryColor);
+const { getPrimaryColorNames, getSurfaceColorNames, applyPrimaryColor, applySurfaceColor } =
+  useThemeConfig();
 const colorOptions = getPrimaryColorNames();
-const onColorChange = () => applyThemeByColorName('primary', selectedColor.value);
+const onColorChange = () => applyPrimaryColor(selectedColor.value);
 
-const selectedSurface = ref<string>(state.surfaceColor.name);
+const selectedSurface = ref<SurfaceColorNames>(state.surfaceColor);
 const surfaceOptions = getSurfaceColorNames();
-const onSurfaceChange = () => applyThemeByColorName('surface', selectedSurface.value);
-
-const setCustomTheme = () => {};
+const onSurfaceChange = () => applySurfaceColor(selectedSurface.value);
 </script>
 
 <template>
@@ -40,8 +39,7 @@ const setCustomTheme = () => {};
         />
       </div>
     </div>
-    <Button label="Set custom theme" @click="setCustomTheme" />
     <div>Primary color: {{ appState.primaryColor }}</div>
-    <div>Primary color: {{ appState.surfaceColor }}</div>
+    <div>Surface color: {{ appState.surfaceColor }}</div>
   </div>
 </template>
