@@ -1,13 +1,12 @@
 import { reactive } from 'vue';
-import { primaryColors, surfaceColors } from '@/theme/colors';
-import type { NoirPrimaryColor, PrimaryColor, SurfaceColor } from '@/theme/color-types';
+import type { PrimaryColorNames, SurfaceColorNames } from '@/theme/colors';
 
 const appState = reactive<{
-  primaryColor: PrimaryColor | NoirPrimaryColor;
-  surfaceColor: SurfaceColor;
+  primaryColor: 'noir' | PrimaryColorNames;
+  surfaceColor: SurfaceColorNames;
 }>({
-  primaryColor: primaryColors.find((color) => color.name === 'emerald')!,
-  surfaceColor: surfaceColors.find((color) => color.name === 'zinc')!
+  primaryColor: 'emerald',
+  surfaceColor: 'slate'
 });
 
 export default appState;
