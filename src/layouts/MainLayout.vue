@@ -2,6 +2,10 @@
 import AppLogo from '@/components/AppLogo.vue';
 import Avatar from 'primevue/avatar';
 import AvatarImg from '@/assets/images/avatar_male.png';
+import { ref } from 'vue';
+import SettingsDrawer from '@/components/SettingsDrawer.vue';
+
+const settingDrawerVisible = ref(false);
 </script>
 
 <template>
@@ -9,8 +13,12 @@ import AvatarImg from '@/assets/images/avatar_male.png';
     <header class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-7">
       <div class="flex grow items-center justify-between">
         <div class="left">left</div>
-        <div class="right">
-          <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
+        <div class="flex items-center justify-center gap-5">
+          <Avatar :image="AvatarImg" class="line- h-9 w-9" shape="circle" />
+          <i
+            class="pi pi-cog cursor-pointer text-xl"
+            @click="settingDrawerVisible = !settingDrawerVisible"
+          ></i>
         </div>
       </div>
     </header>
@@ -23,6 +31,7 @@ import AvatarImg from '@/assets/images/avatar_male.png';
     <div class="main-wrapper flex min-h-screen flex-col justify-between">
       <main class="py-5">
         <RouterView />
+        <SettingsDrawer v-model:visible="settingDrawerVisible" />
       </main>
       <footer class="border-t border-black">footer</footer>
     </div>
