@@ -4,6 +4,7 @@ import Avatar from 'primevue/avatar';
 import AvatarImg from '@/assets/images/avatar_male.png';
 import { ref } from 'vue';
 import SettingsDrawer from '@/components/SettingsDrawer.vue';
+import AppMenu from '@/components/menu/AppMenu.vue';
 
 const settingDrawerVisible = ref(false);
 </script>
@@ -14,7 +15,7 @@ const settingDrawerVisible = ref(false);
       <div class="flex grow items-center justify-between">
         <div class="left">left</div>
         <div class="flex items-center justify-center gap-5">
-          <Avatar :image="AvatarImg" class="line- h-9 w-9" shape="circle" />
+          <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
           <i
             class="pi pi-cog cursor-pointer text-xl"
             @click="settingDrawerVisible = !settingDrawerVisible"
@@ -22,12 +23,12 @@ const settingDrawerVisible = ref(false);
         </div>
       </div>
     </header>
-    <div class="main-sidebar fixed hidden flex-col border-r border-black lg:flex">
-      <div class="main-sidebar__logo flex items-center justify-between px-6">
+    <aside class="main-sidebar fixed hidden flex-col border-r border-black lg:flex">
+      <div class="main-sidebar__logo flex items-center justify-between px-4">
         <AppLogo />
       </div>
-      <div class="min-h-screen">side content</div>
-    </div>
+      <AppMenu />
+    </aside>
     <div class="main-wrapper flex min-h-screen flex-col justify-between">
       <main class="py-5">
         <RouterView />
@@ -38,7 +39,7 @@ const settingDrawerVisible = ref(false);
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
 .main-header {
   height: var(--header-height);
 }

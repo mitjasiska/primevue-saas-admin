@@ -4,8 +4,11 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import Aura from '@primevue/themes/aura';
+import StyleClass from 'primevue/styleclass';
 
 const app = createApp(App);
+
+app.directive('styleclass', StyleClass);
 
 app.use(router);
 
