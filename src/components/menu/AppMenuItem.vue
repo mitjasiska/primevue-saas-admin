@@ -22,7 +22,11 @@ const hasMatchingChildRoute = (menuItem: MenuItem) => {
   }
 
   return menuItem.children.some((child) => {
-    const resolvedPath = router.resolve(child.to!).href;
+    if (!child.to) {
+      return false;
+    }
+
+    const resolvedPath = router.resolve(child.to).href;
     const currentPath = router.resolve(route.path).href;
 
     return resolvedPath === currentPath;
@@ -42,40 +46,68 @@ const hasMatchingChildRoute = (menuItem: MenuItem) => {
         leaveActiveClass: 'animate-slideup'
       }"
       type="button"
+      class="menu-item"
     >
       <span class="menu-icon">
         <i :class="menuItem.icon"></i>
       </span>
       <span>{{ menuItem.name }}</span>
-      <i class="menu-toggle-icon pi pi-angle-down"></i>
+      <i class="menu-toggle-icon pi pi-angle-down ml-auto"></i>
     </button>
 
-    <a v-if="menuItem.href" :href="menuItem.href" target="_blank" rel="noopener noreferrer">
+    <a
+      v-if="menuItem.href"
+      :href="menuItem.href"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="menu-item"
+    >
       <span v-if="menuItem.icon && root" class="menu-icon">
         <i :class="menuItem.icon"></i>
       </span>
       <span>{{ menuItem.name }}</span>
-      <Tag v-if="menuItem.badge" :value="menuItem.badge"></Tag>
+      <Tag v-if="menuItem.badge" :value="menuItem.badge" class="menu-item-tag"></Tag>
     </a>
 
-    <router-link v-if="menuItem.to" :to="menuItem.to">
+    <router-link v-if="menuItem.to" :to="menuItem.to" class="menu-item">
       <span v-if="menuItem.icon && root" class="menu-icon">
         <i :class="menuItem.icon"></i>
       </span>
       <span>{{ menuItem.name }}</span>
-      <Tag v-if="menuItem.badge" :value="menuItem.badge"></Tag>
+      <Tag v-if="menuItem.badge" :value="menuItem.badge" class="menu-item-tag"></Tag>
     </router-link>
 
-    <span v-if="!root && menuItem.children" class="menu-child-category">{{ menuItem.name }}</span>
+    <span v-if="!root && menuItem.children" class="menu-item">{{ menuItem.name }} </span>
     <div
       v-if="menuItem.children"
+      class="menu-item-children"
       :class="{ hidden: menuItem.children && root && !hasMatchingChildRoute(menuItem) }"
     >
-      <ol>
+      <ul>
         <AppMenuItem :root="false" :menu-items="menuItem.children"></AppMenuItem>
-      </ol>
+      </ul>
     </div>
   </li>
 </template>
 
-<style scoped></style>
+<style scoped lang="postcss">
+.menu-item {
+  @apply flex w-full items-center p-3 text-sm font-semibold text-color hover:bg-surface-100;
+}
+
+.menu-item-tag {
+  @apply ml-auto bg-primary-500 text-xs leading-3 text-primary-contrast;
+}
+
+.menu-icon {
+  @apply mr-2 flex items-center justify-center;
+}
+
+.menu-item-children {
+  @apply overflow-hidden pl-4;
+}
+
+.router-link-exact-active {
+  @apply border-r-2 border-primary-600 bg-primary-50 text-primary-600 hover:bg-primary-50;
+}
+</style>
