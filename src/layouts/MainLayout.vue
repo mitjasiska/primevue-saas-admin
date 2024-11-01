@@ -15,6 +15,14 @@ const settingDrawerVisible = ref(false);
       <div class="flex grow items-center justify-between">
         <div class="left">left</div>
         <div class="flex items-center justify-center gap-5">
+          <a
+            href="https://github.com/mitjasiska/primevue-saas-admin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="leading-none"
+          >
+            <i class="pi pi-github text-xl"></i>
+          </a>
           <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
           <i
             class="pi pi-cog cursor-pointer text-xl"
