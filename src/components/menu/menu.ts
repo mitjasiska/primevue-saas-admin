@@ -9,14 +9,25 @@ export type MenuItem = {
 
 export const menuItems: MenuItem[] = [
   {
-    name: 'Getting Started',
+    name: 'Dashboards',
     icon: 'pi pi-home',
     children: [
       {
-        name: 'Dashboard',
-        to: '/dashboard',
-        badge: 'NEW'
-      },
+        name: 'CRM',
+        to: '/crm'
+      }
+    ]
+  },
+  {
+    name: 'Components',
+    icon: 'pi pi-compass',
+    href: 'https://primevue.org/',
+    badge: 'PrimeVue'
+  },
+  {
+    name: 'Getting Started',
+    icon: 'pi pi-home',
+    children: [
       {
         name: 'Introduction',
         to: '/introduction'
