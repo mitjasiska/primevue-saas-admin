@@ -5,7 +5,7 @@ import { menuItems } from '@/components/menu/menu';
 
 <template>
   <nav class="scrollable-y-hover m-0 list-none overflow-y-auto p-0">
-    <ul class="h-[calc(100vh-var(--header-height))] px-2 pb-2">
+    <ul class="h-[calc(100vh-var(--header-height))]">
       <AppMenuItem :menu-items="menuItems"></AppMenuItem>
     </ul>
   </nav>
