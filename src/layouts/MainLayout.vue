@@ -33,10 +33,16 @@ const toggleDarkMode = () => {
           >
             <i class="pi pi-github text-xl"></i>
           </a>
-          <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
           <button type="button" @click="toggleDarkMode">
             <i :class="['pi', { 'pi-sun': appState.darkMode, 'pi-moon': !appState.darkMode }]"></i>
           </button>
+          <div class="flex items-center gap-2">
+            <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
+            <div class="grid">
+              <div class="text-sm font-semibold leading-none text-color">Jamie Webber</div>
+              <div class="text-xs font-semibold text-muted-color">Web Developer</div>
+            </div>
+          </div>
           <i
             class="pi pi-cog cursor-pointer text-xl"
             @click="settingDrawerVisible = !settingDrawerVisible"
