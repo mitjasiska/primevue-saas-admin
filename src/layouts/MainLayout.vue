@@ -5,8 +5,18 @@ import AvatarImg from '@/assets/images/avatar_male.png';
 import { ref } from 'vue';
 import SettingsDrawer from '@/components/SettingsDrawer.vue';
 import AppMenu from '@/components/menu/AppMenu.vue';
+import appState from '@/state/app-state';
 
 const settingDrawerVisible = ref(false);
+const toggleDarkMode = () => {
+  if (appState.darkMode) {
+    document.documentElement.classList.remove('app-dark');
+  } else {
+    document.documentElement.classList.add('app-dark');
+  }
+
+  appState.darkMode = !appState.darkMode;
+};
 </script>
 
 <template>
@@ -24,6 +34,9 @@ const settingDrawerVisible = ref(false);
             <i class="pi pi-github text-xl"></i>
           </a>
           <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
+          <button type="button" @click="toggleDarkMode">
+            <i :class="['pi', { 'pi-sun': appState.darkMode, 'pi-moon': !appState.darkMode }]"></i>
+          </button>
           <i
             class="pi pi-cog cursor-pointer text-xl"
             @click="settingDrawerVisible = !settingDrawerVisible"
