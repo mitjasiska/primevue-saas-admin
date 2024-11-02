@@ -1,5 +1,5 @@
 <template>
-  <div class="items center flex">
+  <div class="items flex items-center">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="h-8 fill-primary-600">
       <rect width="256" height="256" fill="none" />
       <path
