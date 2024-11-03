@@ -21,7 +21,9 @@ const toggleDarkMode = () => {
 
 <template>
   <div>
-    <header class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-7">
+    <header
+      class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-7 text-color"
+    >
       <div class="flex grow items-center justify-between">
         <div class="left">left</div>
         <div class="flex items-center justify-center gap-5">
@@ -39,7 +41,7 @@ const toggleDarkMode = () => {
           <div class="flex items-center gap-2">
             <Avatar :image="AvatarImg" class="h-9 w-9" shape="circle" />
             <div class="grid">
-              <div class="text-sm font-semibold leading-none text-color">Jamie Webber</div>
+              <div class="text-sm font-semibold leading-none">Jamie Webber</div>
               <div class="text-xs font-semibold text-muted-color">Web Developer</div>
             </div>
           </div>
