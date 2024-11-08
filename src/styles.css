@@ -11,6 +11,13 @@
     @tailwind utilities;
 }
 
+/* Custom utilities */
+@layer utilities {
+    .content-border-color {
+        border-color: var(--p-content-border-color);
+    }
+}
+
 /* SaasAdmin variables */
 :root {
     --sidebar-width: 17.5rem;
