@@ -17,7 +17,7 @@ const toggleDarkMode = () => {
 
 <template>
   <header
-    class="main-header g-surface-0 content-border-color fixed left-0 right-0 top-0 flex border-b px-4 text-color"
+    class="main-header content-border-color fixed left-0 right-0 top-0 flex border-b bg-surface-0 px-4 text-color"
   >
     <div class="flex grow items-center justify-between">
       <div>

@@ -16,6 +16,14 @@
     .content-border-color {
         border-color: var(--p-content-border-color);
     }
+
+    .link {
+        color: var(--p-primary-500);
+
+        &:hover {
+            color: var(--p-primary-600);
+        }
+    }
 }
 
 /* SaasAdmin variables */

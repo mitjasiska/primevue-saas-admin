@@ -6,6 +6,7 @@ import appState from '@/state/app-state';
 import MainHeader from '@/layouts/MainHeader.vue';
 import { onClickOutside } from '@vueuse/core';
 import { ref, watch } from 'vue';
+import MainFooter from '@/layouts/MainFooter.vue';
 
 const aside = ref<HTMLElement | null>(null);
 
@@ -50,7 +51,7 @@ watch(
         <RouterView />
         <SettingsDrawer v-model:visible="appState.settingsDrawerVisible" />
       </main>
-      <footer class="border-t border-black">footer</footer>
+      <MainFooter />
     </div>
   </div>
 </template>
