@@ -2,6 +2,7 @@
 import appState from '@/state/app-state';
 import AvatarImg from '@/assets/images/avatar_male.png';
 import Avatar from 'primevue/avatar';
+import AppLogo from '@/components/AppLogo.vue';
 
 const toggleDarkMode = () => {
   if (appState.darkMode) {
@@ -15,9 +16,17 @@ const toggleDarkMode = () => {
 </script>
 
 <template>
-  <header class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-7 text-color">
+  <header class="main-header fixed left-0 right-0 top-0 flex border-b border-black px-4 text-color">
     <div class="flex grow items-center justify-between">
-      <div class="left">left</div>
+      <div>
+        <div class="flex items-center gap-4 lg:hidden">
+          <AppLogo :has-text="false" class="cursor-pointer" />
+          <i
+            class="pi pi-bars cursor-pointer text-2xl"
+            @click="appState.sidebarVisible = !appState.sidebarVisible"
+          ></i>
+        </div>
+      </div>
       <div class="flex items-center justify-center gap-5">
         <a
           href="https://github.com/mitjasiska/primevue-saas-admin"
@@ -49,5 +58,11 @@ const toggleDarkMode = () => {
 <style scoped lang="postcss">
 .main-header {
   height: var(--header-height);
+}
+
+@media (min-width: 1024px) {
+  .main-header {
+    left: var(--sidebar-width);
+  }
 }
 </style>
