@@ -37,7 +37,7 @@ watch(
     <MainHeader />
     <aside
       ref="aside"
-      class="main-sidebar fixed left-0 top-0 flex -translate-x-full flex-col border-r border-black bg-white lg:translate-x-0"
+      class="main-sidebar fixed left-0 top-0 flex -translate-x-full flex-col border-r border-black bg-white transition duration-200 ease-in-out lg:translate-x-0"
       :class="{ 'translate-x-0': appState.sidebarVisible }"
     >
       <div class="main-sidebar__logo flex items-center justify-between px-4">
