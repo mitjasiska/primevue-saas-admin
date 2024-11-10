@@ -5,6 +5,7 @@ import App from './App.vue';
 import router from './router';
 import Aura from '@primevue/themes/aura';
 import StyleClass from 'primevue/styleclass';
+import ToastService from 'primevue/toastservice';
 
 const app = createApp(App);
 
@@ -24,5 +25,7 @@ app.use(PrimeVue, {
     }
   }
 });
+
+app.use(ToastService);
 
 app.mount('#app');
