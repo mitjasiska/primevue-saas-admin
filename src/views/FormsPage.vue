@@ -5,16 +5,12 @@
  */
 import Card from 'primevue/card';
 import { Form } from '@primevue/forms';
-import InputText from 'primevue/inputtext';
-import Button from 'primevue/button';
-import Message from 'primevue/message';
-import Toast from 'primevue/toast';
-import { reactive } from 'vue';
 import { useToast } from 'primevue/usetoast';
+import { ref } from 'vue';
 
 const toast = useToast();
 
-const initialValues = reactive({
+const initialValues = ref({
   username: ''
 });
 
@@ -32,7 +28,6 @@ const resolver = ({ values }) => {
 
 const onFormSubmit = ({ valid }) => {
   if (valid) {
-    console.log('here666');
     toast.add({
       severity: 'success',
       summary: 'Form is submitted.',
@@ -44,16 +39,16 @@ const onFormSubmit = ({ valid }) => {
 
 <template>
   <Card>
-    <template #title>Simple Card</template>
+    <template #title>Simple form</template>
     <template #content>
       <Toast />
 
       <Form
         v-slot="$form"
-        :initialValues
-        :resolver
-        @submit="onFormSubmit"
+        :initial-values="initialValues"
+        :resolver="resolver"
         class="flex w-full flex-col gap-4 sm:w-56"
+        @submit="onFormSubmit"
       >
         <div class="flex flex-col gap-1">
           <InputText name="username" type="text" placeholder="Username" fluid />
